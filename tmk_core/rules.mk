@@ -239,7 +239,7 @@ sizeafter: $(BUILD_DIR)/$(TARGET).hex
 	2>/dev/null; $(SECHO); fi
 
 # Display compiler version information.
-gccversion :
+gccversion:
 	@$(SILENT) || $(CC) --version
 
 # Create final output files (.hex, .eep) from ELF output file.

@@ -26,7 +26,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #define MANUFACTURER        "Massdrop Inc."
 #define PRODUCT             "CTRL Keyboard"
-#define SERIAL_NUM          "Unavailable"
+#define SERIAL_NUM          "001379"
 
 /* key matrix size */
 #define MATRIX_ROWS 11
@@ -46,6 +46,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 /* Debounce reduces chatter (unintended double-presses) - set 0 if debouncing is not needed */
 #define DEBOUNCING_DELAY 5
+
+/* We want a shorter delay before a held mod tap key becomes the mod */
+#define TAPPING_TERM 100
 
 /* Mechanical locking support. Use KC_LCAP, KC_LNUM or KC_LSCR instead in keymap */
 //#define LOCKING_SUPPORT_ENABLE
