@@ -29,6 +29,7 @@ keymap_config_t keymap_config;
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [0] = LAYOUT(
+<<<<<<< HEAD
         KC_ESC,        KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,             KC_PSCR, KC_SLCK, KC_PAUS, \
         KC_GRV,        KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_MINS, KC_EQL,  KC_BSPC,   KC_INS,  KC_HOME, KC_PGUP, \
         KC_TAB,        KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_LBRC, KC_RBRC, KC_BSLS,   KC_DEL,  KC_END,  KC_PGDN, \
@@ -140,8 +141,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case L_T_BR:
             if (record->event.pressed) {
                 led_animation_breathing = !led_animation_breathing;
-                if (led_animation_breathing)
-                {
+                if (led_animation_breathing) {
                     gcr_breathe = gcr_desired;
                     led_animation_breathe_cur = BREATHE_MIN_STEP;
                     breathe_dir = 1;
@@ -155,50 +155,32 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             return false;
         case U_T_AUTO:
             if (record->event.pressed && MODS_SHIFT && MODS_CTRL) {
-                usb_extra_manual = !usb_extra_manual;
-                CDC_print("USB extra port manual mode ");
-                CDC_print(usb_extra_manual ? "enabled" : "disabled");
-                CDC_print("\r\n");
+                TOGGLE_FLAG_AND_PRINT(usb_extra_manual, "USB extra port manual mode");
             }
             return false;
         case U_T_AGCR:
             if (record->event.pressed && MODS_SHIFT && MODS_CTRL) {
-                usb_gcr_auto = !usb_gcr_auto;
-                CDC_print("USB GCR auto mode ");
-                CDC_print(usb_gcr_auto ? "enabled" : "disabled");
-                CDC_print("\r\n");
+                TOGGLE_FLAG_AND_PRINT(usb_gcr_auto, "USB GCR auto mode");
             }
             return false;
         case DBG_TOG:
             if (record->event.pressed) {
-                debug_enable = !debug_enable;
-                CDC_print("Debug mode ");
-                CDC_print(debug_enable ? "enabled" : "disabled");
-                CDC_print("\r\n");
+                TOGGLE_FLAG_AND_PRINT(debug_enable, "Debug mode");
             }
             return false;
         case DBG_MTRX:
             if (record->event.pressed) {
-                debug_matrix = !debug_matrix;
-                CDC_print("Debug matrix ");
-                CDC_print(debug_matrix ? "enabled" : "disabled");
-                CDC_print("\r\n");
+                TOGGLE_FLAG_AND_PRINT(debug_matrix, "Debug matrix");
             }
             return false;
         case DBG_KBD:
             if (record->event.pressed) {
-                debug_keyboard = !debug_keyboard;
-                CDC_print("Debug keyboard ");
-                CDC_print(debug_keyboard ? "enabled" : "disabled");
-                CDC_print("\r\n");
+                TOGGLE_FLAG_AND_PRINT(debug_keyboard, "Debug keyboard");
             }
             return false;
         case DBG_MOU:
             if (record->event.pressed) {
-                debug_mouse = !debug_mouse;
-                CDC_print("Debug mouse ");
-                CDC_print(debug_mouse ? "enabled" : "disabled");
-                CDC_print("\r\n");
+                TOGGLE_FLAG_AND_PRINT(debug_mouse, "Debug mouse");
             }
             return false;
         case MD_BOOT:
@@ -214,3 +196,15 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             return true; //Process all other keycodes normally
     }
 }
+
+led_instruction_t led_instructions[] = {
+    // { .flags = LED_FLAG_MATCH_ID | LED_FLAG_USE_RGB, .id0 = 10, .id1 = 9, .r = 255, .g = 0, .b = 0 },
+    // { .flags = LED_FLAG_MATCH_ID | LED_FLAG_USE_PATTERN, .id0 = 4, .id1 = 0, .pattern_id = 8 },
+    // { .flags = LED_FLAG_MATCH_ID | LED_FLAG_USE_RGB, .id0 = 8, .id1 = 0, .r = 0, .g = 255, .b = 0 },
+    // { .flags = LED_FLAG_MATCH_ID | LED_FLAG_USE_PATTERN, .id = 16, .id1 = 0, .pattern_id = 9 },
+    // { .flags = LED_FLAG_MATCH_ID | LED_FLAG_USE_RGB, .id0 = 32, .id1 = 0, .r = 0, .g = 0, .b = 255 },
+    // { .flags = LED_FLAG_MATCH_ID | LED_FLAG_USE_ROTATE_PATTERN, .id0 = 64, .id1 = 0},
+    // { .flags = LED_FLAG_MATCH_ID | LED_FLAG_MATCH_LAYER | LED_FLAG_USE_ROTATE_PATTERN, .id0 = 262144, .id1 = 0, .layer = 0 },
+    // { .flags = LED_FLAG_MATCH_ID | LED_FLAG_MATCH_LAYER | LED_FLAG_USE_ROTATE_PATTERN, .id = 16777216, .id1 = 0, .layer = 1 },
+    { .end = 1 }
+};
