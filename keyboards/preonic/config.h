@@ -44,6 +44,14 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define AUDIO_VOICES
 #define C6_AUDIO
 
+#define AUDIO_CLICKY
+#define AUDIO_CLICKY_ON
+#define AUDIO_CLICKY_FREQ_DEFAULT 440.0f
+#define AUDIO_CLICKY_FREQ_MIN 60.0f
+#define AUDIO_CLICKY_FREQ_MAX 4000.0f
+#define AUDIO_CLICKY_FREQ_FACTOR 1.18921f
+#define AUDIO_CLICKY_FREQ_RANDOMNESS 1.0f
+
 #define BACKLIGHT_PIN B7
 
 /* COL2ROW or ROW2COL */
