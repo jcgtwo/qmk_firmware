@@ -12,6 +12,7 @@
 *.lss
 *.lst
 *.map
+*.orig
 *.sym
 *.swp
 tags
